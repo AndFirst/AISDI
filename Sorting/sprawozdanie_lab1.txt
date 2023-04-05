@@ -1,0 +1,16 @@
+Zaimplementowaliśmy 4 funkcje sortujące:
+
+1) Bubble sort: O(n^2)
+    Pętla, która działa dopóki wykonywane w niej operacje zmieniają (zbliżają do posortowanej listy) listę, na której operujemy. Kiedy nie będą już zachodziły zmiany lista będzie posortowana. Każdy obieg pętli polega na przejściu po całej liście i ustaleniu po kolei która spośród pary liczb jest większa i w razie konieczności zamiany liczb. Po każdym przejściu pętli wyłania się przynajmniej jeden dobrze posortowany element.
+2) Selection sort: O(n^2)
+    Dla każdego elementu listy przechodzimy po wszytskich elementach położonych na prawo od niego. Szukamy elementu najmniejszego i zapisujemy go w zmiennej minimum. Kiedy już przejdziemy po wszystkich elementach położonych na prawo od niego zamieniamy ten element z elementem najmniejszym, który jeszcze nie został posortowany. Dzięki temu gdy dojdziemy do ostatniego elementu położonego po prawej stronie, lista będzie posortowana.
+3) Merge sort: O(n*log(n))
+    Funkcja rekurencyjna, dzieli zadaną listę na coraz to mniejsze części aż każda z nich będzie miała długość 1. Następnie zachodzi scalanie po kolei "połówek" list, aż funkcja dojdzie do posortowanej listy.
+4) Quick sort: O(n*log(n)) / O(n^2)
+    Funkcja rekurencyjna, dopóki jej długość nie będzie równa 1, wykonuje nastepujące operacje: bierze pierwszy element listy i dzieli resztę elementów na 3 grupy (mniejsze, równe i większe od 1 elementu). Nastepnie na grupie większej i mniejszej zostaje wywołana ta sama funkcja. Na koniec zachodzi proces scalania list w jedną posortowaną listę.
+
+Testy w pyteście wykazały poprawność działania dla różnych przypadków.
+
+Do pomiarów wydajności napisaliśmy funkcję timing. Wykorzystuje ona funkcję time z biblioteki time. Wybraliśmy ją ponieważ dawała bardziej wiarygodne wyniki niż process_time (w niektórych przypadkach czas sortowania wynosił 0 dla dużych zestawów danych). Funkcja benchmark wywołuje funkcję timing dla 0, 1000, 2000, … 10000 słów i zwraca listę otrzymanych wyników. Funkcja plot_functions z modułu plotter.py wywołuje funkcję benchmark dla każdej funkcji sortującej podanej w jej wywołaniu, oraz tworzy wspólny wykres liniowy zawierający wyniki pomiarów czasu dla każdej funkcji. Wykresy są zapisywane do katalogu Plots. 
+
+Zgodnie z naszymi przewidywaniami najwolniejszym okazał się algorytm sortowania bąbelkowego. Dla dużych danych był on kilkukrotnie szybszy niż sortownie przez wybór. Wykresy pomiarów wydajności tych algorytmów wskazują na to że ich złożoność obliczeniowa zależy od kwadratu ilości danych. Zdecydowanie szybsze były algorytmy sortowania przez scalanie oraz sortowania szybkiego. Ich czas działania był porównywalny. Wykresy wskazują na to że złożoność obliczeniowa tych algorytmów jest liniowo – logartymiczna. 
